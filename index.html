@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Calculator</title>
+  <meta charset="UTF-8">
+  <link href="./style/style.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<main class="main">
+  <section class="title-block">
+    <span>
+      Loan Calculator
+    </span>
+  </section>
+  <section class="top-section" id="firstBlock">
+    <div class="line">
+      <label class="sm">
+        Loan Amount
+      </label>
+      <div class="mini-input-block">
+        <input type="text" value="51300.00" id="loanAmount">
+        <div class="unit-block">
+          <span class="unit">
+            $
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Interest Rate
+        </label>
+        <div class="mini-input-block">
+          <input class="interest-rate" type="text" value="8.00" id="interestRate">
+          <div class="unit-block">
+            <span class="unit">
+              %
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Loan Term
+        </label>
+        <div class="input-block">
+          <input type="text" value="360" class="mini loan-term" id="loanTerm">
+          <div class="unit-block">
+            <span class="unit days">
+              DAYS
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line" class="sm">
+      <label>
+        Estimated Appraised Value
+      </label>
+      <div class="mini-input-block">
+        <input class="estimated" type="text" value="57000.00" id="estimatedAppraisedValue">
+        <div class="unit-block">
+          <span class="unit">
+            $
+          </span>
+        </div>
+      </div>  
+    </div>
+    <div class="line long">
+      <label class="medium">
+        Homeowners Due Date - Always Use 1st Day of the Month
+      </label>
+      <div class="input-block">
+        <input type="text" id="datepicker" value="04/01/2020" class="mini" placeholder="mm/dd/yyyy">
+        <div class="unit-block calendar">
+        </div>
+      </div>
+    </div>
+    <div class="line long">
+      <label class="medium">
+        Taxes Due Date
+      </label>
+      <div class="input-block">
+        <input type="text" id="datepicker2" value="12/31/2020" class="mini" placeholder="mm/dd/yyyy">
+        <div class="unit-block calendar">
+        </div>
+      </div>
+    </div>
+    <div class="line long">
+      <label class="medium">
+        First Payment Date - Always Use 1st Day of the Month
+      </label>
+      <div class="input-block">
+        <input type="text" id="datepicker3" value="05/01/2020" class="mini" placeholder="mm/dd/yyyy">
+        <div class="unit-block calendar">
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Monthly Principal & Interest:
+        </span>
+        <div class="summary-cost">
+          <span class="cost c1">
+            $
+          </span>
+          <span class="cost c2" id="monthlyPrincipal">
+          </span>
+        </div>
+      </div>
+      <div class="summary-line">
+        <span class="summary-label">
+          Estimated Taxes Insurance & Assessments:
+        </span>
+        <div class="summary-cost">
+          <span class="cost c1">
+            $
+          </span>
+          <span class="cost c2" id="estimatedTaxesInsurance">
+            
+          </span>
+        </div>
+      </div>
+      <div class="summary-line">
+        <span class="summary-label">
+          Estimated Property Taxes:
+        </span>
+        <div class="summary-cost">
+          <div class="summary-cost">
+            <span class="cost c1">
+              $
+            </span>
+            <span class="cost c2" id="estimatedPropertyTaxes">
+              
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="total-block">
+        <div class="total">
+          <span class="total-name">
+            Closing Costs:
+          </span>
+          <div class="total-price">
+            <span class="price p1" id="closingCostsTop">
+              3 754.<span class="small-numbers">97</span>
+            </span>
+          </div>
+        </div>
+        <div class="total">
+          <span class="total-name">
+            Сash to Close:
+          </span>
+          <div class="total-price">
+            <span class="price p1" id="cashToClose">
+              3 754.<span class="small-numbers">97</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="origination-charges-s letter-section" id="block3">
+    <div class="letter-section-title-block title-block-s">
+      <div class="letter">
+        <span>
+          A
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Origination Charges
+      </span>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Processing
+        </label>
+        <div class="mini-input-block">
+          <input type="text" value="300.00" id="processing" class="interest-rate">
+        <div class="unit-block">
+          <span class="unit">
+            $
+          </span>
+        </div>
+        </div>
+        
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Origination
+        </label>
+        <div class="input-block">
+          <input type="text" value="570.00" id="origination" class="mini loan-term">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Origination Charges:
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="originationCharges">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="you-cannot-s letter-section" id="block4">
+    <div class="you-cannot-title-block title-block-s">
+      <div class="letter">
+        <span>
+          B
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Services You Cannot Shop For
+      </span>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Appraisal
+        </label>
+        <div class="mini-input-block">
+          <input type="text" value="625.00" id="appraisal" class="interest-rate">
+        <div class="unit-block">
+          <span class="unit">
+            $
+          </span>
+        </div>
+        </div>
+        
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Flood Determination
+        </label>
+        <div class="input-block">
+          <input type="text" value="17.00" id="floodDetermination" class="mini loan-term">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Services You Cannot Shop For
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="servicesCannotShop">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="you-canns letter-section" id="block5">
+    <div class="you-can-title-block title-block-s">
+      <div class="letter">
+        <span>
+          C
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Services You Can Shop For
+      </span>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Title - Abstract or Title Search
+        </label>
+        <div class="mini-input-block">
+          <input type="text" id="abstractSearch" class="interest-rate">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+       
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Title - Final Title
+        </label>
+        <div class="input-block">
+          <input type="text" id="finalTitle" class="mini loan-term">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Title - Lender's Title Insurance
+        </label>
+        <div class="mini-input-block">
+          <input  type="text" id="lendersTitle" class="interest-rate">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Title - Title Examination
+        </label>
+        <div class="input-block">
+          <input type="text" value="400.00" id="titleExamination" class="mini loan-term">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Title - Closing Fee
+        </label>
+        <div class="mini-input-block">
+          <input type="text" value="300.00" id="closingFee" class="interest-rate">
+        <div class="unit-block">
+          <span class="unit">
+            $
+          </span>
+        </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Services You Can Shop For
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="servicesCanShop">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="total-section">
+    <div class="total-section-block">
+      <div class="title-block-s">
+        <div class="letter">
+          <span>
+            D
+          </span>
+        </div>
+        <span class="letter-title-name">
+          Total Loan Costs (A + B + C)
+        </span>
+      </div>
+      <div class="summary-cost">
+        <span class="cost c2" id="totalLoanCost">
+          1
+        </span>
+      </div>
+    </div>
+  </section>
+  <h2 class="additional-title">
+    Other Costs
+  </h2>
+
+  <section class="letter-section">
+    <div class="title-block-s">
+      <div class="letter">
+        <span>
+          E
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Taxes & Other Government Fees
+      </span>
+    </div>
+   
+    <div class="const-costs-block">
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          Recording Fees and Other Taxes
+        </span>
+        <span class="const-cost-value">
+          72.
+          <span class="small-numbers">
+           00
+          </span>
+        </span>
+      </div>
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          Transfer Taxes
+        </span>
+        <span class="const-cost-value" id="transferTaxes">
+          56
+        </span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Taxes & Other Government Fees
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="taxesandGovermentFee">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="letter-section">
+    <div class="title-block-s">
+      <div class="letter">
+        <span>
+          F
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Prepaids
+      </span>
+    </div>
+   
+    <div class="const-costs-block">
+      <div class="const-cost-line long">
+        <span class="const-cost-name">
+          Recording Fees and Other Taxes
+        </span>
+        <span class="const-cost-value" id="insurancePremium">
+          
+        </span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Prepaids
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="prepaids">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="letter-section">
+    <div class="title-block-s">
+      <div class="letter">
+        <span>
+          G
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Initial Escrow Payment @ Closing
+      </span>
+    </div>
+   
+    <div class="const-costs-block">
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          Homeowners Insurance
+        </span>
+        <span class="const-cost-value" id="homeownerInsurance">
+          
+        </span>
+      </div>
+      <div class="const-cost-line input-line">
+        <input type="text" value="2" class="month mini" id="months">
+        <div class="unit-block">
+          <span class="unit">
+            Mo
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="const-cost-line">
+      <span class="const-cost-name">
+        Mortgage Insurance
+      </span>
+      <span class="const-cost-value">
+        -
+      </span>
+    </div>
+    <div class="const-costs-block">
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          Property Taxes
+        </span>
+        <span class="const-cost-value" id="propertyTaxes">
+          
+        </span>
+      </div>
+      <div class="const-cost-line period-line">
+          <span class="period p1" id="period">
+            
+          </span>
+          <span class="period p2">
+            &nbsp;Months
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Initial Escrow Payment @ Closing
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="initialEscrowPaiment">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="letter-section">
+    <div class="title-block-s">
+      <div class="letter">
+        <span>
+          H
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Other
+      </span>
+    </div>
+   
+    <div class="const-costs-block">
+      <div class="const-cost-line long">
+        <span class="const-cost-name">
+          Title - Owner's Title Insurance
+        </span>
+        <span class="const-cost-value" id="ownersTitleInsuranse">
+          308.<span class="small-numbers">00</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Other
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="other">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="total-section">
+    <div class="total-section-block">
+      <div class="title-block-s">
+        <div class="letter">
+          <span>
+            I
+          </span>
+        </div>
+        <span class="letter-title-name">
+          Total Other Costs (E + F + G + H)
+        </span>
+      </div>
+      <div class="summary-cost">
+        <span class="cost c2" id="totalOtherCosts">
+          
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter-section">
+    <div class="title-block-s">
+      <div class="letter">
+        <span>
+          J
+        </span>
+      </div>
+      <span class="letter-title-name">
+        Total Closing Costs 
+      </span>
+    </div>
+   
+    <div class="const-costs-block">
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          D + I
+        </span>
+        <span class="const-cost-value" id="DI">
+          
+        </span>
+      </div>
+      <div class="const-cost-line">
+        <span class="const-cost-name">
+          Lender Credits
+        </span>
+        <span class="const-cost-value" id="lenderCredits">
+          
+        </span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-line">
+        <span class="summary-label">
+          Other
+        </span>
+        <div class="summary-cost">
+          <span class="cost c2" id="DIother">
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <section class="top-section" id="bottomBlock">
+    <div class="lines-block">
+      <div class="line mar">
+        <label class="sm">
+          Purchase Price
+        </label>
+        <div class="mini-input-block">
+          <input class="interest-rate" type="text" value="57000.00" id="purchasePrice">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <div class="line loan-term-line">
+        <label class="loan-term-label">
+          Down Payment
+        </label>
+        <div class="input-block">
+          <input type="text" value="5700.00" class="mini loan-term" id="downPayment">
+          <div class="unit-block">
+            <span class="unit">
+              $
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="summary-block bottom" >
+      <div class="summary-line">
+        <div class="const-cost-line">
+          <span class="const-cost-name">
+            Closing Costs
+          </span>
+          <span class="const-cost-value" id="closingCosts">
+            
+          </span>
+        </div>
+        <div class="const-cost-line">
+          <span class="const-cost-name">
+            Loan Amount
+          </span>
+          <span class="const-cost-value" id="loanAmountLast">
+            
+          </span>
+        </div>
+      </div>
+      <div class="summary-line">
+        <div class="const-cost-line">
+          <span class="const-cost-name">
+            Cash From / To Borrower
+          </span>
+          <span class="const-cost-value" id="cashFrom">
+            
+          </span>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+</main>
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
